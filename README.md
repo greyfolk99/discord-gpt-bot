@@ -23,20 +23,20 @@ splitter : ". "
 ![img.png](img.png)
 
 ## For developers :  
-1. install dependencies
+1. Install dependencies
 ```
 npm install
 ```
-
-2. Make .env file to set variables for discord token and OpenAI API key:  
+  
+2. Get Settings done in OpenAI and Discord Application  
+  
+3. Make .env file to set variables for discord token and OpenAI API key:  
 ```
-.env
-
 OPENAI_API_KEY="[YOUR API KEY]"
 DISCORD_BOT_TOKEN="[YOUR BOT TOKEN]"
 ```
-
-3. start
+  
+4. Start server
 ```
 node index.js
 ```
