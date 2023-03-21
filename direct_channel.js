@@ -1,6 +1,6 @@
 import {COMMANDS, PREFIX} from "./commands.js";
 
-// todo : 추후 업데이트
+// todo : not working
 async function replyMessage(message) {
     if (!message.content.startsWith(PREFIX) || message.author.bot) return;
     const [...args] = message.content

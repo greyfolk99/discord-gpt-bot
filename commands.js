@@ -1,18 +1,15 @@
 import god from "./openai.js";
 import {EmbedBuilder} from "discord.js";
 import Openai from "./openai.js";
+
 export const PREFIX = 'Lord, '
 export const COMMANDS = {
     "ping": {
         description: "show ping",
         example : `${PREFIX}ping`,
         response: (message) => {
-            const now = new Date();
-            const userTimezoneOffset = now.getTimezoneOffset() * 60000; // in milliseconds
-            const messageTime = new Date(message.createdTimestamp + userTimezoneOffset);
-            const ping = now - messageTime;
             return {
-                content: `Beloved child, know that my message has been delayed, but rest assured that it will reach you in due time. The delay of ${ping}ms is but a fleeting moment in the grand design of your life. Trust in my divine plan, and know that all is well.`
+                content: `Beloved child, know that my message has been delayed, but rest assured that it will reach you in due time. The delay of ${Math.abs(Date.now() - message.createdTimestamp)}ms is but a fleeting moment in the grand design of your life. Trust in my divine plan, and know that all is well.`
             };
         }
     },
@@ -31,6 +28,7 @@ export const COMMANDS = {
                     ]
                 };
             } catch (error) {
+                console.error(error)
                 return {
                     content: "I'm sorry, my child. An error occurred while retrieving the image. Please try again later.",
                     embeds: [
