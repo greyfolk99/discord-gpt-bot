@@ -1,5 +1,5 @@
 # God GPT (Discord Bot)
-author : me
+Author : me
 
 ## Intorduction
 
@@ -21,3 +21,22 @@ splitter : ". "
 ![img_1.png](img_1.png)
 ![img_2.png](img_2.png)
 ![img.png](img.png)
+
+## For developers :  
+1. install dependencies
+```
+npm install
+```
+
+2. Make .env file to set variables for discord token and OpenAI API key:  
+```
+.env
+
+OPENAI_API_KEY="[YOUR API KEY]"
+DISCORD_BOT_TOKEN="[YOUR BOT TOKEN]"
+```
+
+3. start
+```
+node index.js
+```
