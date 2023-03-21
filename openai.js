@@ -17,7 +17,6 @@ async function giveAnswer(prompt) {
         presence_penalty: 0,
         max_tokens: 1024
     });
-    console.log(response)
     return response.data.choices[0].text;
 }
 async function showImage(prompt){
@@ -26,7 +25,6 @@ async function showImage(prompt){
         n: 1,
         size: "256x256"
     })
-    console.log(response)
     return response.data.data[0].url;
 }
 

@@ -10,7 +10,6 @@ async function replyMessage(message) {
     const command = COMMANDS[args[0]];
     if (command) {
         const response = await command.response(message, ...args);
-        console.log(response)
         await message.author.send(response);
     }
 }

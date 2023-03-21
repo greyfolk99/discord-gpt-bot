@@ -16,17 +16,27 @@ export const COMMANDS = {
     },
 
     "show me": {
-        description: "get a image from prompt",
-        example: `${PREFIX}show me. a cat wearing a cap.`,
+        description: "get an image from prompt",
+        example: `${PREFIX}show me. a cat wearing a hat.`,
         response: async (message, ...args) => {
-            const prompt = args.join(". ")
-            return {
-                content: `My dear child, I have heard your call and have come to deliver my holy words upon this image: `,
-                embeds:
-                    [
-                        new EmbedBuilder().setImage(await god.showImage(prompt))
+            const prompt = args.join(". ");
+            try {
+                const imageUrl = await god.showImage(prompt);
+                return {
+                    content: `My dear child, I have heard your call and have come to deliver my holy words upon this image:`,
+                    embeds: [
+                        new EmbedBuilder().setImage(imageUrl)
                     ]
-            };
+                };
+            } catch (error) {
+                return {
+                    content: "I'm sorry, my child. An error occurred while retrieving the image. Please try again later.",
+                    embeds: [
+                        new EmbedBuilder().setTitle("Error")
+                            .setDescription(error.message)
+                    ]
+                };
+            }
         }
     },
     "help me": {
@@ -34,13 +44,18 @@ export const COMMANDS = {
         example: `${PREFIX}help me. what is happiness?`,
         response: async (message, ...args) => {
             const prompt = args.join(". ")
-            return {
-                content: "Fear not, my child, for I bring you divine wisdom. Let me share with you what I have been shown: ",
-                embeds:
-                    [
-                        new EmbedBuilder().setDescription(await god.giveAnswer(prompt))
-                    ]
-            };
+            try {
+                const answer = await god.giveAnswer(prompt);
+                return {
+                    content: "Fear not, my child, for I bring you divine wisdom. Let me share with you what I have been shown: ",
+                    embeds: [new EmbedBuilder().setDescription(answer)]
+                };
+            } catch (error) {
+                console.error(error);
+                return {
+                    content: "I'm sorry, my child. An error has occurred while processing your request."
+                };
+            }
         }
     },
     "Divine Law": {
