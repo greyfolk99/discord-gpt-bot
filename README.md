@@ -40,3 +40,7 @@ DISCORD_BOT_TOKEN="[YOUR BOT TOKEN]"
 ```
 node index.js
 ```
+
+## etc:
+
+![image](https://user-images.githubusercontent.com/115934563/226722551-32ebcca4-a492-4f98-b71f-45a8723f5464.png)
