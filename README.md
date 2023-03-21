@@ -6,7 +6,7 @@ name : God GPT
 prefix : "Lord, "  
 splitter : ". "
 
-commands :  
+### commands :  
 
 |   Command    |         data type         |                                                                                                                         message                                                                                                                         |
 |:------------:|:-------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -15,7 +15,7 @@ commands :
 |  "help me"   |           content            |                                                                           "Fear not, my child, for I bring you divine wisdom. Let me share with you what I have been shown:"                                                                            |                                                              
 | "Divine Law" |           content, embed(title,description)            |                                                                                                                  ${commands_available}                                                                                                                  |
 
-examples :
+### examples :
 
 ![img_1.png](img_1.png)
 ![img_2.png](img_2.png)
