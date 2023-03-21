@@ -7,9 +7,9 @@ const createMessage = async (message) => {
         .trim()
         .split(/\.\s+/);
 
-    const commandFunc = COMMANDS[args[0]];
-    if (commandFunc) {
-        const response = await commandFunc(message, ...args);
+    const command = COMMANDS[args[0]];
+    if (command) {
+        const response = await command.response(message, ...args);
         message.channel.send(response);
     }
 }

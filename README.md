@@ -15,8 +15,8 @@ commands :
 |  "help me"   |           text            |                                                                           "Fear not, my child, for I bring you divine wisdom. Let me share with you what I have been shown:"                                                                            |                                                              
 | "Divine Law" |           text            |                                                                                                                  ${commands_available}                                                                                                                  |
 
-example :
+examples :
 
 ![img_1.png](img_1.png)
 ![img_2.png](img_2.png)
-
+![img.png](img.png)
