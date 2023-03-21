@@ -7,10 +7,12 @@ export const COMMANDS = {
         description: "show ping",
         example : `${PREFIX}ping`,
         response: (message) => {
+            const now = new Date();
+            const userTimezoneOffset = now.getTimezoneOffset() * 60000; // in milliseconds
+            const messageTime = new Date(message.createdTimestamp + userTimezoneOffset);
+            const ping = now - messageTime;
             return {
-                content: `Beloved child, know that my message has been delayed, but rest assured that it will reach you in due time. The delay of ${
-                    Date.now() - message.createdTimestamp
-                }ms is but a fleeting moment in the grand design of your life. Trust in my divine plan, and know that all is well.`
+                content: `Beloved child, know that my message has been delayed, but rest assured that it will reach you in due time. The delay of ${ping}ms is but a fleeting moment in the grand design of your life. Trust in my divine plan, and know that all is well.`
             };
         }
     },
