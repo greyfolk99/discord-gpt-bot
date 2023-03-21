@@ -1,4 +1,5 @@
 # God GPT (Discord Bot)
+author : me
 
 ## Intorduction
 
