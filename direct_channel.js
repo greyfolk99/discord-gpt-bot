@@ -1,6 +1,6 @@
 import {COMMANDS, PREFIX} from "./commands.js";
 
-// todo : not working
+/*
 async function replyMessage(message) {
     if (!message.content.startsWith(PREFIX) || message.author.bot) return;
     const [...args] = message.content
@@ -15,3 +15,5 @@ async function replyMessage(message) {
 }
 const dm = {replyMessage}
 export default dm;
+
+ */

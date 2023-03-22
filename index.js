@@ -21,9 +21,11 @@ client.on("messageCreate", message => {
     console.log(`${message.author} : ${message.content}`)
     channel.createMessage(message);
 })
-// TODO: not working
+
+/*
 client.on("message", message => {
     console.log(`${message.author} : ${message.content}`)
     dm.replyMessage(message);
 })
+ */
 

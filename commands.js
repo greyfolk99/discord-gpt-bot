@@ -4,6 +4,7 @@ import Openai from "./openai.js";
 
 export const PREFIX = 'Lord, '
 export const COMMANDS = {
+    
     "ping": {
         description: "show ping",
         example : `${PREFIX}ping`,
