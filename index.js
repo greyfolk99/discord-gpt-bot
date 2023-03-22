@@ -1,7 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import Discord from "discord.js";
 import channel from "./channel.js";
-import dm from "./direct_channel.js";
 import dotenv from "dotenv"
 dotenv.config()
 
