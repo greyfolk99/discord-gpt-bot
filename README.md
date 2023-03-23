@@ -43,7 +43,7 @@ node index.js
 
 ## etc:
 
-![image](https://user-images.githubusercontent.com/115934563/226722551-32ebcca4-a492-4f98-b71f-45a8723f5464.png)
+![image](https://user-images.githubusercontent.com/115934563/226722551-32ebcca4-a492-4f98-b71f-45a8723f5464.png)  
 ![image](https://user-images.githubusercontent.com/115934563/227163580-4ea0f764-cd01-4366-9c4b-9949d1bcd192.png)
 there you go
 
