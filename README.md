@@ -1,4 +1,12 @@
-# God GPT v1 (Discord Bot)
+# God GPT v2.0 (Discord Bot)
+
+### updated to v2.0
+- responses sound more holy
+- error message sound more holy
+- regular moral restriction responses sound more holy
+- added gpt 3.5 turbo model to get text for 'help me' command.
+
+
 Author : me
 
 ## Intorduction
