@@ -8,9 +8,9 @@ export const COMMANDS = {
     "ping": {
         description: "show ping",
         example : `${PREFIX}ping`,
-        response: async (message) => {
+        response: (message) => {
             return {
-                content: await god.soundMoreHoly(`ping is ${Math.abs(Date.now() - message.createdTimestamp)}ms`)
+                content: `Your voice reached to me with ${Math.abs(Date.now() - message.createdTimestamp)}ms`
             };
         }
     },
@@ -24,13 +24,14 @@ export const COMMANDS = {
             let imageUrl = await god.showImage(prompt)
                 .then(async (imageUrl) => {
                     res = {
-                        content: await god.soundMoreHoly('here is the image you requested'),
+                        content: "My dear child, I have heard your call and have come to deliver my holy words upon this image.",
                         embeds: [
                             new EmbedBuilder().setImage(imageUrl)
                         ]
                     };
                 })
                 .catch(async (error) => {
+                    console.error(error.message);
                     res = {
                         content: await god.explainError(prompt, error.message)
                     }
@@ -54,6 +55,7 @@ export const COMMANDS = {
                     }
                 })
                 .catch(async (error) => {
+                    console.error(error.message);
                     res = {
                         content: await god.explainError(prompt, error.message)
                     }

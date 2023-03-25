@@ -16,7 +16,7 @@ async function soundMoreHoly(prompt) {
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
-        max_tokens: 256
+        max_tokens: 512
     });
     console.log("[soundMoreHoly] token used : " + response.data.usage.total_tokens);
     return response.data.choices[0].text.slice(0, -1).trim();
@@ -67,11 +67,11 @@ async function explainError(prompt, error_message) {
         messages: [
             {
                 'role': "system",
-                content: "I sent prompt to gpt '" +prompt+ "', and I got an error message: '" + error_message + "', explain why it happened briefly, without detailed information that should not expose to public, because the explanation is for users who use the service, not for developers who would fix the error. Also, act like you are a god and you are talking to a human, so you do not need to be polite nor apologize for the error, and should sound holy. you should call server as 'universe' and developers as 'angels'."
+                content: "I sent prompt to gpt '" +prompt+ "', and I got an error message: '" + error_message + "', explain why it happened briefly, without detailed information that should not expose to public, because the explanation is for users(human), not for developers who would fix the error. Also, act like you are a god and you are talking to a human, so you do not need to be polite nor apologize for the error, and should sound holy. you should call server as 'universe' and developers as 'angels'."
             },
         ],
         temperature: 0.3,
-        max_tokens: 100
+        max_tokens: 256
     }).then((response) => {
         console.log("[explainError] token used : " + response.data.usage.total_tokens);
         answer = response.data.choices[0].message['content'];
@@ -89,7 +89,6 @@ async function showImage(prompt){
         n: 1,
         size: "256x256"
     });
-    console.log("[showImage] token used : " + response.data.usage.total_tokens);
     return response.data.data[0].url;
 }
 
