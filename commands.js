@@ -8,9 +8,9 @@ export const COMMANDS = {
     "ping": {
         description: "show ping",
         example : `${PREFIX}ping`,
-        response: (message) => {
+        response: async (message) => {
             return {
-                content: `Beloved child, know that my message has been delayed, but rest assured that it will reach you in due time. The delay of ${Math.abs(Date.now() - message.createdTimestamp)}ms is but a fleeting moment in the grand design of your life. Trust in my divine plan, and know that all is well.`
+                content: await god.soundMoreHoly(`ping is ${Math.abs(Date.now() - message.createdTimestamp)}ms`)
             };
         }
     },
@@ -20,54 +20,58 @@ export const COMMANDS = {
         example: `${PREFIX}show me. a cat wearing a hat.`,
         response: async (message, ...args) => {
             const prompt = args.join(". ");
-            try {
-                const imageUrl = await god.showImage(prompt);
-                return {
-                    content: `My dear child, I have heard your call and have come to deliver my holy words upon this image:`,
-                    embeds: [
-                        new EmbedBuilder().setImage(imageUrl)
-                    ]
-                };
-            } catch (error) {
-                console.error(error)
-                return {
-                    content: "I'm sorry, my child. An error occurred while retrieving the image. Please try again later.",
-                    embeds: [
-                        new EmbedBuilder().setTitle("Error")
-                            .setDescription(error.message)
-                    ]
-                };
-            }
+            let res;
+            let imageUrl = await god.showImage(prompt)
+                .then(async (imageUrl) => {
+                    res = {
+                        content: await god.soundMoreHoly('here is the image you requested'),
+                        embeds: [
+                            new EmbedBuilder().setImage(imageUrl)
+                        ]
+                    };
+                })
+                .catch(async (error) => {
+                    res = {
+                        content: await god.explainError(prompt, error.message)
+                    }
+                });
+            return res;
         }
     },
+
     "help me": {
         description: "get text from prompt",
         example: `${PREFIX}help me. what is happiness?`,
+
         response: async (message, ...args) => {
             const prompt = args.join(". ")
-            try {
-                const answer = await god.giveAnswer(prompt);
-                return {
-                    content: "Fear not, my child, for I bring you divine wisdom. Let me share with you what I have been shown: ",
-                    embeds: [new EmbedBuilder().setDescription(answer)]
-                };
-            } catch (error) {
-                console.error(error);
-                return {
-                    content: "I'm sorry, my child. An error has occurred while processing your request."
-                };
-            }
-        }
+
+            let res;
+            await god.giveAnswer(prompt)
+                .then(async (answer) => {
+                    res = {
+                        content: await god.soundMoreHoly(answer)
+                    }
+                })
+                .catch(async (error) => {
+                    res = {
+                        content: await god.explainError(prompt, error.message)
+                    }
+                });
+            return res;
+        },
     },
+
     "Divine Law": {
         description: "show commands available",
         example: `${PREFIX}Divine Law`,
         response: (message, ...args) => {
-            const commandEmbeds = Object.entries(COMMANDS).map(([name, {description, example}]) => {
-                return new EmbedBuilder()
-                    .setTitle(`${PREFIX}${name}`)
-                    .setDescription(`${description}\nex) ${example}`);
-            });
+            const commandEmbeds = Object.entries(COMMANDS)
+                .map(([name, {description, example}]) => {
+                    return new EmbedBuilder()
+                        .setTitle(`${PREFIX}${name}`)
+                        .setDescription(`${description}\nex) ${example}`);
+                });
             return {
                 content: "Here are the rules you must follow:",
                 embeds: commandEmbeds
